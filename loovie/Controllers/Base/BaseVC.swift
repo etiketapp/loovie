@@ -8,23 +8,37 @@
 
 import UIKit
 
+protocol BaseVCDelegate {
+    func didAddRefresher(refresher: UIRefreshControl)
+    func didRefresh()
+}
+
 class BaseVC: UIViewController {
+    
+    var baseDelegate: BaseVCDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        hideKeyboardWhenTappedAround()
+        setNavigationBarBackButtonEmpty()
+        addAppIconToNavbar()
+        view.backgroundColor = .mainBackground
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    override func viewDidDisappear(_ animated: Bool) {
+           super.viewDidDisappear(true)
+           self.stopProgressHud()
+       }
+       
+       func addRefresher() {
+           let refresher = UIRefreshControl()
+           refresher.tintColor = .spinnerColor
+           refresher.addTarget(self, action: #selector(refreshed), for: .valueChanged)
+           baseDelegate.didAddRefresher(refresher: refresher)
+       }
+       
+       @objc func refreshed() {
+           baseDelegate.didRefresh()
+       }
 
 }

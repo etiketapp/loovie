@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HkA-J8-cVU">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--MainVC-->
+        <scene sceneID="VGo-vF-nA0">
+            <objects>
+                <viewController id="HkA-J8-cVU" customClass="MainVC" customModule="loovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zsZ-bE-NDB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A8M-dn-W6D" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="70" y="316" width="274" height="274"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="A8M-dn-W6D" secondAttribute="height" multiplier="1:1" id="cVg-oj-QWX"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xhd-IR-2uK">
+                                <rect key="frame" x="20" y="256.5" width="374" height="39.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applogo30" translatesAutoresizingMaskIntoConstraints="NO" id="GNO-ah-N6D">
+                                <rect key="frame" x="192" y="206.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9cW-7a-nqf"/>
+                                    <constraint firstAttribute="width" secondItem="GNO-ah-N6D" secondAttribute="height" multiplier="1:1" id="KMq-H0-aX6"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rxB-9N-TFB" firstAttribute="trailing" secondItem="A8M-dn-W6D" secondAttribute="trailing" constant="70" id="1ol-lg-qrm"/>
+                            <constraint firstItem="Xhd-IR-2uK" firstAttribute="top" secondItem="GNO-ah-N6D" secondAttribute="bottom" constant="20" id="73g-ku-YqE"/>
+                            <constraint firstItem="A8M-dn-W6D" firstAttribute="top" secondItem="Xhd-IR-2uK" secondAttribute="bottom" constant="20" id="AQm-lF-He0"/>
+                            <constraint firstItem="A8M-dn-W6D" firstAttribute="centerY" secondItem="rxB-9N-TFB" secondAttribute="centerY" id="GL0-tg-Qxc"/>
+                            <constraint firstItem="A8M-dn-W6D" firstAttribute="leading" secondItem="rxB-9N-TFB" secondAttribute="leading" constant="70" id="IBj-iq-18t"/>
+                            <constraint firstItem="A8M-dn-W6D" firstAttribute="centerX" secondItem="rxB-9N-TFB" secondAttribute="centerX" id="cy6-Fh-dpE"/>
+                            <constraint firstItem="Xhd-IR-2uK" firstAttribute="leading" secondItem="rxB-9N-TFB" secondAttribute="leading" constant="20" id="ff1-Nq-swP"/>
+                            <constraint firstItem="GNO-ah-N6D" firstAttribute="centerX" secondItem="Xhd-IR-2uK" secondAttribute="centerX" id="g3W-ON-kmT"/>
+                            <constraint firstItem="rxB-9N-TFB" firstAttribute="trailing" secondItem="Xhd-IR-2uK" secondAttribute="trailing" constant="20" id="j82-db-1Mo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rxB-9N-TFB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bs3-1M-vGy"/>
+                    <connections>
+                        <outlet property="animationView" destination="A8M-dn-W6D" id="ii4-M2-oah"/>
+                        <outlet property="logoImageView" destination="GNO-ah-N6D" id="vsU-9M-v3Q"/>
+                        <outlet property="titleLabel" destination="Xhd-IR-2uK" id="3Kv-kr-Hil"/>
+                        <segue destination="62I-bb-0e9" kind="presentation" identifier="SearchVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="mfm-JT-kRs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rQ5-6B-mMg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989.85507246376824" y="-162.05357142857142"/>
+        </scene>
+        <!--SearchVC-->
+        <scene sceneID="V84-zq-Pfz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SearchVC" id="62I-bb-0e9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="VGG-ce-49B"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sgx-PH-7Vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534.057971014493" y="-162.05357142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="applogo30" width="30" height="30"/>
+    </resources>
+</document>

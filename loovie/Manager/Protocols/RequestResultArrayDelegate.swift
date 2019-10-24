@@ -7,3 +7,27 @@
 //
 
 import Foundation
+
+protocol RequestResultArrayDelegate: RequestDelegate {
+    
+    associatedtype ResultObjectType: Codable
+    
+    func didSuccess(_ result: ResponseArray<ResultObjectType>)
+    
+}
+
+extension RequestResultArrayDelegate {
+    
+    func request(success: @escaping RequestManager.ArrayClosure<ResultObjectType>, failure: @escaping RequestManager.ErrorClosure) {
+        RequestManager.request(self, success: { (result: ResponseArray<ResultObjectType>) in
+            self.didSuccess(result)
+            success(result)
+        }) { (error) in
+            self.didError(error)
+            failure(error)
+        }
+    }
+    
+    func didSuccess(_ result: ResponseArray<ResultObjectType>) {}
+    
+}

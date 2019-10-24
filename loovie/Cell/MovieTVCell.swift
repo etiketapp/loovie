@@ -7,18 +7,47 @@
 //
 
 import UIKit
+import Lottie
 
-class MovieTVCell: UITableViewCell {
-
+class MovieTVCell: UITableViewCell, NibLoadableView, ReusableView {
+    
+    @IBOutlet private weak var animationView: AnimationView!
+    @IBOutlet private weak var movieImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var yearLabel: UILabel!
+    @IBOutlet private weak var imdbLabel: UILabel!
+    @IBOutlet private weak var typeLabel: UILabel!
+    
+    var movie: BaseResponse! {
+        didSet {
+            if let url = movie.poster {
+                if url == "N/A" {
+                    animationView.isHidden = false
+                    animate()
+                }else {
+                    movieImageView.setImageUrl(imageUrl: url)
+                    animationView.isHidden = true
+                }
+            }
+            titleLabel.text = movie.title
+            imdbLabel.text = movie.imdbID
+            typeLabel.text = movie.type
+            yearLabel.text = movie.year
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    //MARK: - Functions
+    func animate() {
+        let animation = Animation.named("notFound")
+        animationView.loopMode = .loop
+        animationView.animation = animation
+        animationView.contentMode = .scaleAspectFit
+        animationView.play()
     }
     
 }
